@@ -196,12 +196,21 @@
                 </p>
             </div>
         </div>
-</footer>
+    </footer>
+    <button id="auto-upsell-trigger" class="kirvano-payment-trigger hidden">Abrir Upsell</button>
     <script>
       var offer = "c1f492d0-1b85-4510-b8c5-85fb7c6cadc4";
       var nextPageURL = "https://vitinzera1977.github.io/Site-mulherdefe/";
       var refusePageURL = null;
     </script>
     <script src="https://snippets.kirvano.com/upsell.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var btn = document.getElementById('auto-upsell-trigger');
+          if (btn) btn.click();
+        }, 400);
+      });
+    </script>
 </body>
 </html>
