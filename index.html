@@ -50,13 +50,14 @@
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-            <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-4">
+            <div id="mobile-menu" class="md:hidden hidden mt-4 space-y-4 bg-white/90 backdrop-blur rounded-xl shadow-lg p-4 border border-white/40 transition-all duration-200 ease-out transform -translate-y-2 opacity-0">
                 <a href="#sobre" class="block text-gray-700 hover:text-lilas transition-colors">Sobre</a>
                 <a href="#beneficios" class="block text-gray-700 hover:text-lilas transition-colors">Benefícios</a>
                 <a href="#depoimentos" class="block text-gray-700 hover:text-lilas transition-colors">Depoimentos</a>
             </div>
         </nav>
     </header>
+    <div id="mobile-overlay" class="fixed inset-0 bg-black/30 backdrop-blur-sm hidden z-40 md:hidden"></div>
 
     <!-- Hero Section -->
     <section class="py-16 md:py-24">
@@ -382,14 +383,30 @@
 
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobile-menu');
-        if (hamburger && mobileMenu) {
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        function openMenu() {
+            mobileMenu.classList.remove('hidden');
+            mobileOverlay.classList.remove('hidden');
+            mobileMenu.classList.remove('-translate-y-2','opacity-0');
+            mobileMenu.classList.add('translate-y-0','opacity-100');
+        }
+        function closeMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileOverlay.classList.add('hidden');
+            mobileMenu.classList.add('-translate-y-2','opacity-0');
+            mobileMenu.classList.remove('translate-y-0','opacity-100');
+        }
+        if (hamburger && mobileMenu && mobileOverlay) {
             hamburger.addEventListener('click', function() {
-                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    openMenu();
+                } else {
+                    closeMenu();
+                }
             });
+            mobileOverlay.addEventListener('click', closeMenu);
             mobileMenu.querySelectorAll('a[href^="#"]').forEach(a => {
-                a.addEventListener('click', function() {
-                    mobileMenu.classList.add('hidden');
-                });
+                a.addEventListener('click', closeMenu);
             });
         }
     </script>
