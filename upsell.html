@@ -210,7 +210,7 @@
     <script>
       var offer = "c1f492d0-1b85-4510-b8c5-85fb7c6cadc4";
       var nextPageURL = "https://vitinzera1977.github.io/Site-mulherdefe/thanks.html";
-      var refusePageURL = null;
+      var refusePageURL = "https://vitinzera1977.github.io/Site-mulherdefe/thanks.html";
     </script>
     <script src="https://snippets.kirvano.com/upsell.min.js"></script>
     <script>
@@ -224,6 +224,12 @@
         if (bar && closeBtn) {
           closeBtn.addEventListener('click', function(){ bar.classList.add('hidden'); });
         }
+        var thanksURL = "https://vitinzera1977.github.io/Site-mulherdefe/thanks.html";
+        document.querySelectorAll('.kirvano-refuse-trigger').forEach(function(el){
+          el.addEventListener('click', function(){
+            window.location.href = thanksURL;
+          });
+        });
       });
     </script>
     <script>
